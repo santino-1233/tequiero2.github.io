@@ -169,7 +169,7 @@
   /* ---------- Carga ---------- */
 
   // Misma cuenta y tag que usa subir.html (ver js/subir.js)
-  var CLOUDINARY = { cloudName: "TU_CLOUD_NAME", tag: "tequiero" };
+  var CLOUDINARY = { cloudName: "gb6kfzeo", tag: "tequiero" };
 
   // Trae fotos y videos subidos desde subir.html. Si no hay nada o no
   // está configurado, devuelve [] y se usa data/galeria.json.

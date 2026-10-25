@@ -12,8 +12,8 @@
   "use strict";
 
   // ---- CONFIG: completar con los datos de tu cuenta de Cloudinary ----------
-  var CLOUD_NAME = "TU_CLOUD_NAME";       // Cloudinary > Settings > Account
-  var UPLOAD_PRESET = "TU_UPLOAD_PRESET"; // Settings > Upload > Upload presets (unsigned)
+  var CLOUD_NAME = "gb6kfzeo";            // Cloudinary > Settings > Account
+  var UPLOAD_PRESET = "Tequiero.secret";  // Settings > Upload > Upload presets (unsigned)
   var TAG = "tequiero";                   // tag que se le pone a cada archivo
 
   var configurado = CLOUD_NAME.indexOf("TU_") !== 0 && UPLOAD_PRESET.indexOf("TU_") !== 0;
