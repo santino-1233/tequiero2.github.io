@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tequieropasteleria.netlify.app/sitemap.xml

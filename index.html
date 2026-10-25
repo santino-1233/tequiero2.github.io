@@ -1,11 +1,49 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Té Quiero Pastelería y Cafetería | Florencio Varela</title>
   <meta name="description" content="Té Quiero, pastelería y cafetería de autor en Calle 25 de Mayo 3066, Florencio Varela. Mirá nuestro menú, horarios, reseñas y cómo llegar.">
   <meta name="theme-color" content="#8CCDB7">
+  <link rel="canonical" href="https://tequieropasteleria.netlify.app/">
+  <link rel="icon" href="assets/logo-header.png">
+
+  <!-- Datos para compartir (WhatsApp, Instagram, Facebook) -->
+  <meta property="og:type" content="business.business">
+  <meta property="og:site_name" content="Té Quiero Pastelería y Cafetería">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="Té Quiero Pastelería y Cafetería | Florencio Varela">
+  <meta property="og:description" content="Pastelería y cafetería de autor en Florencio Varela. Menú, horarios y cómo llegar.">
+  <meta property="og:url" content="https://tequieropasteleria.netlify.app/">
+  <meta property="og:image" content="https://tequieropasteleria.netlify.app/assets/hero-torta.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Datos del negocio para Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Bakery",
+    "name": "Té Quiero Pastelería y Cafetería",
+    "url": "https://tequieropasteleria.netlify.app/",
+    "image": "https://tequieropasteleria.netlify.app/assets/hero-torta.jpg",
+    "telephone": "+54 9 11 3686-0671",
+    "servesCuisine": ["Pastelería", "Cafetería"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle 25 de Mayo 3066",
+      "addressLocality": "Florencio Varela",
+      "addressRegion": "Buenos Aires",
+      "addressCountry": "AR"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": -34.8077869, "longitude": -58.2797511 },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "09:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "16:00", "closes": "21:00" }
+    ],
+    "sameAs": ["https://www.instagram.com/tequieropasteleria"]
+  }
+  </script>
 
   <!-- Tipografías: Playfair Display (títulos) e Inter (textos y precios) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +54,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/resenas.css">
   <link rel="stylesheet" href="css/galeria.css">
+  <link rel="stylesheet" href="css/destacados.css">
 </head>
 <body>
 
@@ -88,6 +127,42 @@
     </section>
 
     <!-- ======================================================
+         MENÚ DESTACADO (datos del Google Sheet del menú)
+         ====================================================== -->
+    <section class="section reveal" id="menu-destacado">
+      <div class="container">
+        <span class="section__kicker">Para probar</span>
+        <h2 class="section__title">Algunos de nuestros favoritos</h2>
+        <p class="section__text">Tortas, facturas y cafetería, hechas a mano cada día.</p>
+
+        <p id="menuDestacadoEstado" class="destacados__estado">Cargando menú…</p>
+        <div class="menu-destacado__grid" id="menuDestacadoGrid"></div>
+
+        <div class="destacados__cta">
+          <a class="btn btn--primary" href="menu.html">Ver menú completo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         GALERÍA DESTACADA (fotos y videos subidos a Cloudinary)
+         Se muestra solo si hay contenido.
+         ====================================================== -->
+    <section class="section section--alt reveal" id="galeria-destacada" hidden>
+      <div class="container">
+        <span class="section__kicker">Nuestras creaciones</span>
+        <h2 class="section__title">Galería</h2>
+        <p class="section__text">Tortas, facturas y momentos de la casa.</p>
+
+        <div class="galeria-destacada__grid" id="galeriaDestacadaGrid"></div>
+
+        <div class="destacados__cta">
+          <a class="btn btn--primary" href="galeria.html">Ver galería completa</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
          UBICACIÓN
          ====================================================== -->
     <section class="section reveal" id="ubicacion">
@@ -101,7 +176,7 @@
 
         <div class="map">
           <iframe
-            src="https://www.google.com/maps?q=T%C3%A9+Quiero,+Calle+25+de+Mayo+3066,+Florencio+Varela,+Buenos+Aires&amp;z=17&amp;output=embed"
+            src="https://www.google.com/maps?q=-34.8077869,-58.2797511&amp;z=17&amp;output=embed"
             title="Mapa de Té Quiero Pastelería"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
@@ -109,7 +184,7 @@
         </div>
 
         <a class="btn btn--primary"
-           href="https://www.google.com/maps/place/T%C3%A9+Quiero/@-34.8067363,-58.2784819,16z/data=!3m1!5s0x95a329601a4ecad9:0x8eed13e575cde13f!4m16!1m7!3m6!1s0x95a3295f7c7ccfc9:0x5fe5d638825499c7!2sRojo+Bar!8m2!3d-34.8037948!4d-58.280502!16s%2Fg%2F1yfdr06fd!3m7!1s0x95a329601c0f245d:0x686f7a192fe13fee!8m2!3d-34.8077869!4d-58.2797511!9m1!1b1!16s%2Fg%2F11b88ljzsv?entry=ttu&amp;g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D"
+           href="https://www.google.com/maps/place/T%C3%A9+Quiero/@-34.807311,-58.2788189,16.25z/data=!3m1!5s0x95a329601a4ecad9:0x8eed13e575cde13f!4m6!3m5!1s0x95a329601c0f245d:0x686f7a192fe13fee!8m2!3d-34.8077869!4d-58.2797511!16s%2Fg%2F11b88ljzsv?entry=ttu&amp;g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D"
            target="_blank" rel="noopener">
           Cómo llegar
         </a>
@@ -137,10 +212,10 @@
         <div class="carrusel__puntos" id="carruselPuntos" hidden></div>
 
         <div class="resenas__cta">
-          <a class="btn btn--ghost" href="https://www.google.com/maps/place/T%C3%A9+Quiero/@-34.8067363,-58.2784819,16z/data=!3m1!5s0x95a329601a4ecad9:0x8eed13e575cde13f!4m16!1m7!3m6!1s0x95a3295f7c7ccfc9:0x5fe5d638825499c7!2sRojo+Bar!8m2!3d-34.8037948!4d-58.280502!16s%2Fg%2F1yfdr06fd!3m7!1s0x95a329601c0f245d:0x686f7a192fe13fee!8m2!3d-34.8077869!4d-58.2797511!9m1!1b1!16s%2Fg%2F11b88ljzsv?entry=ttu&amp;g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
+          <a class="btn btn--ghost" href="https://www.google.com/maps/place/T%C3%A9+Quiero/@-34.807311,-58.2788189,16.25z/data=!3m1!5s0x95a329601a4ecad9:0x8eed13e575cde13f!4m6!3m5!1s0x95a329601c0f245d:0x686f7a192fe13fee!8m2!3d-34.8077869!4d-58.2797511!16s%2Fg%2F11b88ljzsv?entry=ttu&amp;g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
             Ver todas las reseñas en Google
           </a>
-          <a class="btn btn--primary" href="https://www.google.com/maps/place/T%C3%A9+Quiero/@-34.8067363,-58.2784819,16z/data=!3m1!5s0x95a329601a4ecad9:0x8eed13e575cde13f!4m16!1m7!3m6!1s0x95a3295f7c7ccfc9:0x5fe5d638825499c7!2sRojo+Bar!8m2!3d-34.8037948!4d-58.280502!16s%2Fg%2F1yfdr06fd!3m7!1s0x95a329601c0f245d:0x686f7a192fe13fee!8m2!3d-34.8077869!4d-58.2797511!9m1!1b1!16s%2Fg%2F11b88ljzsv?entry=ttu&amp;g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
+          <a class="btn btn--primary" href="https://www.google.com/maps/place/T%C3%A9+Quiero/@-34.807311,-58.2788189,16.25z/data=!3m1!5s0x95a329601a4ecad9:0x8eed13e575cde13f!4m6!3m5!1s0x95a329601c0f245d:0x686f7a192fe13fee!8m2!3d-34.8077869!4d-58.2797511!16s%2Fg%2F11b88ljzsv?entry=ttu&amp;g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
             Agregar reseña
           </a>
         </div>
@@ -182,6 +257,11 @@
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <img class="site-footer__logo" src="assets/logo-white.png" alt="Té Quiero Pastelería">
+      <p class="site-footer__text">Calle 25 de Mayo 3066, Florencio Varela</p>
+      <p class="site-footer__text">Lunes a sábado 9 a 21 hs · Domingos 16 a 21 hs</p>
+      <p class="site-footer__text">
+        <a href="https://www.instagram.com/tequieropasteleria?igsh=MWNyOG1oaXk3Mml3Zw%3D%3D" target="_blank" rel="noopener">@tequieropasteleria</a>
+      </p>
       <p class="site-footer__text">&copy; <span id="year"></span> Té Quiero Pastelería. Todos los derechos reservados.</p>
     </div>
   </footer>
@@ -194,6 +274,8 @@
 
   <!-- Header, revelado, menú móvil y año -->
   <script src="js/main.js"></script>
+  <!-- Menú y galería destacados -->
+  <script src="js/destacados.js"></script>
   <!-- Reseñas: carga y envío desde el backend -->
   <script src="js/resenas.js"></script>
 </body>
