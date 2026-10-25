@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Subir fotos y videos | Té Quiero</title>
+  <meta name="theme-color" content="#8CCDB7">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/galeria.css">
+  <link rel="stylesheet" href="css/subir.css">
+</head>
+<body>
+
+  <header class="site-header is-visible" id="siteHeader">
+    <div class="container site-header__inner">
+      <a href="index.html" class="site-header__logo" aria-label="Té Quiero Pastelería, ir al inicio">
+        <img src="assets/logo-white.png" alt="Té Quiero Pastelería">
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="uploader-page">
+      <span class="eyebrow">Panel privado</span>
+      <h1 class="section-title">Subir fotos y videos</h1>
+      <p class="uploader-note">
+        Esta página no aparece en el menú del sitio. Lo que subas acá se muestra automáticamente en la galería.
+      </p>
+
+      <p id="avisoConfig" class="aviso-config" hidden>
+        Falta configurar CLOUD_NAME y UPLOAD_PRESET al principio de js/subir.js y js/galeria.js.
+      </p>
+
+      <!-- Subida -->
+      <form id="upload-form">
+        <label class="dropzone" id="dropzone">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+          <p><strong>Tocá para elegir fotos o videos</strong><br>o arrastralos hasta acá</p>
+          <input type="file" id="file-input" accept="image/*,video/*" multiple>
+        </label>
+      </form>
+
+      <div class="upload-list" id="upload-list"></div>
+
+      <hr class="uploader-sep">
+
+      <!-- Borrado -->
+      <h2 class="section-title">Borrar archivos</h2>
+      <p class="uploader-note">
+        Para borrar necesitás la API Key y el API Secret de Cloudinary. Se guardan solo en esta pestaña y se pierden al recargar.
+      </p>
+      <form id="credenciales" class="credenciales" autocomplete="off">
+        <label>
+          API Key
+          <input type="text" id="api-key" required>
+        </label>
+        <label>
+          API Secret
+          <input type="password" id="api-secret" required>
+        </label>
+        <button type="submit">Activar borrado</button>
+      </form>
+      <p id="estado-credenciales" class="estado-credenciales" aria-live="polite"></p>
+
+      <hr class="uploader-sep">
+
+      <!-- Archivos ya subidos -->
+      <h2 class="section-title">Archivos ya subidos</h2>
+      <p class="uploader-note" id="gallery-status" aria-live="polite">Cargando...</p>
+      <div class="upload-list" id="existing-photos"></div>
+
+      <div class="uploader-volver">
+        <a href="galeria.html">Ver la galería →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <img class="site-footer__logo" src="assets/logo-white.png" alt="Té Quiero Pastelería">
+      <p class="site-footer__text">&copy; <span id="year"></span> Té Quiero Pastelería.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/subir.js"></script>
+</body>
+</html>

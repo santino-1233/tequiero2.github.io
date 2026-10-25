@@ -1,0 +1,258 @@
+/* =========================================================
+   Reseñas: carrusel con tarjetas de degradado (colores de Google)
+   Usa las variables de css/styles.css
+   ========================================================= */
+
+.resenas__estado {
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+  margin: 0 0 28px;
+}
+
+.resenas__estado[hidden] {
+  display: none;
+}
+
+/* ---------- Carrusel ---------- */
+
+.carrusel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.carrusel[hidden] {
+  display: none;
+}
+
+.carrusel__btn {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--blanco);
+  color: var(--texto);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: var(--sombra-suave);
+  transition: transform 0.25s var(--ease-rebote), box-shadow 0.25s var(--ease);
+}
+
+.carrusel__btn[hidden] {
+  display: none;
+}
+
+.carrusel__btn:hover,
+.carrusel__btn:focus-visible {
+  transform: scale(1.08);
+  box-shadow: var(--sombra);
+}
+
+.carrusel__pista {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 10px 4px 26px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carrusel__pista::-webkit-scrollbar {
+  display: none;
+}
+
+.carrusel__pista:focus-visible {
+  outline: 3px solid var(--mint-oscuro);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.carrusel__puntos {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.carrusel__puntos[hidden] {
+  display: none;
+}
+
+.carrusel__punto {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #b5d8c9;
+  cursor: pointer;
+  transition: width 0.3s var(--ease), background-color 0.3s var(--ease);
+}
+
+.carrusel__punto[aria-current="true"] {
+  width: 26px;
+  background: var(--texto);
+}
+
+/* ---------- Tarjeta: degradado de Google + panel de lectura ---------- */
+
+.resena {
+  flex: 0 0 min(340px, 84%);
+  scroll-snap-align: start;
+  border-radius: 24px;
+  padding: 6px;
+  background: linear-gradient(135deg, #4285F4 0%, #34A853 34%, #FBBC05 67%, #EA4335 100%);
+  box-shadow: var(--sombra-suave);
+  transition: transform 0.35s var(--ease-rebote), box-shadow 0.35s var(--ease);
+}
+
+.resena:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra);
+}
+
+.resena__panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  border-radius: 19px;
+  background: rgba(255, 255, 255, 0.94);
+  text-align: left;
+}
+
+.resena__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.resena__avatar {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--mint);
+  color: var(--texto);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.resena__datos {
+  min-width: 0;
+}
+
+.resena__nombre {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: var(--texto);
+  overflow-wrap: anywhere;
+}
+
+.resena__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin-top: 4px;
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+}
+
+.resena__badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--mint-suave);
+  color: var(--texto);
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+
+.resena__texto {
+  margin: 0;
+  font-size: 0.97rem;
+  line-height: 1.65;
+  color: var(--texto);
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.resena__fecha {
+  margin: auto 0 0;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+
+.resenas__cta {
+  margin-top: 6px;
+}
+
+/* ---------- Responsive ---------- */
+
+/* Pantallas medianas: dos tarjetas visibles */
+@media (max-width: 960px) {
+  .resena {
+    flex-basis: calc((100% - 20px) / 2);
+  }
+}
+
+/* Escritorio: tres tarjetas visibles */
+@media (min-width: 961px) {
+  .resena {
+    flex-basis: calc((100% - 40px) / 3);
+  }
+}
+
+@media (max-width: 600px) {
+  .carrusel {
+    gap: 6px;
+  }
+
+  .carrusel__btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1.3rem;
+  }
+
+  .resena {
+    flex-basis: 88%;
+  }
+
+  .resena__panel {
+    padding: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carrusel__pista {
+    scroll-behavior: auto;
+  }
+
+  .resena,
+  .resena:hover {
+    transform: none;
+  }
+}
+
+/* Botones de la sección de reseñas */
+.resenas__cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}

@@ -1,0 +1,8 @@
+[
+  { "tipo": "imagen", "titulo": "Torta de chocolate", "src": "" },
+  { "tipo": "imagen", "titulo": "Torta de frutas", "src": "" },
+  { "tipo": "imagen", "titulo": "Facturas de la casa", "src": "" },
+  { "tipo": "imagen", "titulo": "Brownies", "src": "" },
+  { "tipo": "video", "titulo": "Preparación de una torta", "src": "", "poster": "" },
+  { "tipo": "video", "titulo": "El local", "src": "", "poster": "" }
+]
